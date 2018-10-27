@@ -25,6 +25,38 @@ export default class Boot extends Phaser.Scene {
         };
         xhr.send();
 
+        xhr = new XMLHttpRequest();
+        xhr.open('PUT', 'http://localhost:3000/nano/on');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                //var userInfo = JSON.parse(xhr.responseText);
+                console.log(xhr.responseText);
+            }
+        };
+        xhr.send(JSON.stringify({
+            name: 'John Smith',
+            age: 34
+        }));
+
+        setTimeout(function ()
+        {
+            xhr = new XMLHttpRequest();
+            xhr.open('PUT', 'http://localhost:3000/nano/off');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    //var userInfo = JSON.parse(xhr.responseText);
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send(JSON.stringify({
+                name: 'John Smith',
+                age: 34
+            }));
+
+        }, 5000);
+
         this.sound.mute = appConfig.mute;
 
         this.sys.canvas.style.zoom = (1/window.devicePixelRatio).toString();

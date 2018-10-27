@@ -24,4 +24,26 @@ router.get('/', function(req, res, next)
         });
 });
 
+router.put('/on', function (req, res)
+{
+    api.turnOn()
+        .then(function() {
+            res.send('Success!');
+        })
+        .catch(function(err) {
+            res.send(err);
+        });
+});
+
+router.put('/off', function (req, res)
+{
+    api.turnOff()
+        .then(function() {
+            res.send('Success!');
+        })
+        .catch(function(err) {
+            res.send(err);
+        });
+});
+
 module.exports = router;
