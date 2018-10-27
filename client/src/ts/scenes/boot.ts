@@ -14,6 +14,8 @@ export default class Boot extends Phaser.Scene {
 
         this.sound.mute = appConfig.mute;
 
+        this.sys.canvas.style.zoom = (1/window.devicePixelRatio).toString();
+
         // TODO update when scale manager gets available
         // // set scale mode
         // this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
