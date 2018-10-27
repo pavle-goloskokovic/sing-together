@@ -34,8 +34,8 @@ export const size: {
     readonly x:number
     readonly y:number
 } = {
-    x: screen.width * window.devicePixelRatio,
-    y: screen.height * window.devicePixelRatio
+    x: 1920,//(<any>screen).width * window.devicePixelRatio,
+    y: 1080//(<any>screen).height * window.devicePixelRatio
 };
 /**
  * Game orientation
