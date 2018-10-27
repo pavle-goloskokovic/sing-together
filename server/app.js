@@ -6,6 +6,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var nanoRouter = require('./routes/nano');
+var mcuRouter = require('./routes/mcu');
 
 var app = express();
 
@@ -25,5 +26,6 @@ app.use(function(req, res, next) {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/nano', nanoRouter);
+app.use('/mcu', mcuRouter);
 
 module.exports = app;
