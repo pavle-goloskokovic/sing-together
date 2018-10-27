@@ -1,0 +1,64 @@
+{
+  "name": "phaser3-webpack4-typescript-boilerplate",
+  "version": "0.0.0",
+  "description": "Phaser 3, Webpack 4 and TypeScript Boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open --port 3017",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production --config webpack.config.prod.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavle-goloskokovic/phaser3-webpack4-typescript-boilerplate.git"
+  },
+  "keywords": [
+    "phaser",
+    "type",
+    "script",
+    "typescript",
+    "boilerplate",
+    "gamedev",
+    "game",
+    "development",
+    "javascript",
+    "webpack"
+  ],
+  "author": "Pavle Goloskoković",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pavle-goloskokovic/phaser3-webpack4-typescript-boilerplate/issues"
+  },
+  "homepage": "https://github.com/pavle-goloskokovic/phaser3-webpack4-typescript-boilerplate#readme",
+  "dependencies": {
+    "js-logger": "^1.4.1",
+    "lodash": "^4.17.10",
+    "phaser": "^3.10.1",
+    "stats.js": "^0.17.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.109",
+    "@types/node": "^10.3.2",
+    "@types/stats.js": "^0.17.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.11",
+    "expose-loader": "^0.7.5",
+    "html-loader": "^0.5.5",
+    "html-webpack-banner-plugin": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "imagemin-webpack-plugin": "^2.1.5",
+    "mini-css-extract-plugin": "^0.4.0",
+    "phaser3-docs": "github:photonstorm/phaser3-docs",
+    "pug": "^2.0.3",
+    "pug-loader": "^2.4.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "ts-loader": "^4.4.1",
+    "ts-node": "^6.1.1",
+    "typescript": "^2.9.1",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.4",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
