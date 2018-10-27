@@ -3,7 +3,7 @@ var router = express.Router();
 
 const  request   = require('request');
 
-let interval = null;
+let timeout = null;
 
 function toggle ()
 {
@@ -17,30 +17,19 @@ function toggle ()
     );
 }
 
-router.get('/on', function(req, res, next)
+router.get('/start', function(req, res, next)
 {
-    toggle();
-
-    if(interval)
+    if(!timeout)
     {
-        clearInterval(interval);
-    }
+        timeout = setTimeout(function ()
+        {
+            toggle();
 
-    interval = setInterval(function ()
-    {
+            timeout = null;
+
+        }, 5000);
+
         toggle();
-
-    }, 5000);
-
-    res.send('Success!');
-
-});
-
-router.get('/off', function(req, res, next)
-{
-    if(interval)
-    {
-        clearInterval(interval);
     }
 
     res.send('Success!');
