@@ -7,7 +7,7 @@ let interval = null;
 
 function toggle ()
 {
-    request('http://www.google.com',
+    request('http://192.168.43.43/gpio/toggle',
         function (error, response, body)
         {
             console.log('error:', error); // Print the error if one occurred
