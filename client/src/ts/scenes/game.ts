@@ -188,6 +188,24 @@ export default class Game extends Phaser.Scene {
 
                 // TODO add hear particle here
 
+                // heart particle
+
+                //  First create a particle manager
+                //  A single manager can be responsible for multiple emitters
+                //  The manager also controls which particle texture is used by _all_ emitter
+                let particles = this.add.particles('heart');
+
+                let emitter = particles.createEmitter(null);
+                emitter.setPosition(w/2, 350);
+                emitter.setSpeed(300);
+                emitter.setBlendMode(Phaser.BlendModes.NORMAL);
+
+                let emitter2 = particles.createEmitter(null);
+                emitter2.setPosition(w/2, 350);
+                emitter2.setSpeed(300);
+                emitter2.setBlendMode(Phaser.BlendModes.SCREEN);
+
+                // MAMA on top
                 leafs[3].text.depth = 100;
             },
 
