@@ -125,7 +125,7 @@ export default class Game extends Phaser.Scene {
                 this.setLeaf(leafs[3], 'yellow', 'M');
             },
 
-            // M + A
+            // M + A => MA
 
             ()=>{
                 this.setLeaf(leafs[3], 'black', '');
@@ -155,6 +155,42 @@ export default class Game extends Phaser.Scene {
                 this.setLeaf(leafs[4], 'black', '');
                 this.setLeaf(leafs[3], 'green', 'MA');
             },
+
+            // MA  + MA => MAMA
+
+            ()=>{
+                this.setLeaf(leafs[3], 'black', '');
+                this.setLeaf(leafs[0], 'green', 'MA');
+            },
+            ()=>{
+                this.setLeaf(leafs[6], 'green', 'MA');
+            },
+            ()=>{
+                this.setLeaf(leafs[0], 'black', '');
+                this.setLeaf(leafs[1], 'green', 'MA');
+            },
+            ()=>{
+                this.setLeaf(leafs[6], 'black', '');
+                this.setLeaf(leafs[5], 'green', 'MA');
+            },
+            ()=>{
+                this.setLeaf(leafs[1], 'black', '');
+                this.setLeaf(leafs[2], 'green', 'MA');
+            },
+            ()=>{
+                this.setLeaf(leafs[5], 'black', '');
+                this.setLeaf(leafs[4], 'green', 'MA');
+            },
+            ()=>{
+                this.setLeaf(leafs[2], 'black', '');
+                this.setLeaf(leafs[4], 'black', '');
+                this.setLeaf(leafs[3], 'red', 'MAMA');
+
+                // TODO add hear particle here
+
+                leafs[3].text.depth = 100;
+            },
+
 
         ];
 
