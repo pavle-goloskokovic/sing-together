@@ -26,7 +26,7 @@ export default class Boot extends Phaser.Scene {
         xhr.send();
 
         xhr = new XMLHttpRequest();
-        xhr.open('PUT', 'http://localhost:3000/nano/on');
+        xhr.open('POST', 'http://localhost:3000/nano/effect');
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onload = function() {
             if (xhr.status === 200) {
@@ -35,11 +35,10 @@ export default class Boot extends Phaser.Scene {
             }
         };
         xhr.send(JSON.stringify({
-            name: 'John Smith',
-            age: 34
+            name: Math.random() > 0.5 ? 'Forest' : 'Romantic'
         }));
 
-        setTimeout(function ()
+        /*setTimeout(function ()
         {
             xhr = new XMLHttpRequest();
             xhr.open('PUT', 'http://localhost:3000/nano/off');
@@ -55,7 +54,7 @@ export default class Boot extends Phaser.Scene {
                 age: 34
             }));
 
-        }, 5000);
+        }, 5000);*/
 
         this.sound.mute = appConfig.mute;
 
