@@ -54,25 +54,41 @@ export default class Game extends Phaser.Scene {
 
         // leafs
 
-        let leafs = [];
+        let leafs: any[] = [];
 
-        for(let i=0; i<7; i++)
-        {
-            let leaf = this.addLeaf(
-                w/2 + (i-3) * 240,
-                320 + (i%2 === 0 ? -1 : 1)*24,
-                i%2 === 0 ? -1 : 1,
-                'black',
-                'A');
+        let commands = [
+            ()=>
+            {
+                for(let i=0; i<7; i++)
+                {
+                    title.visible = false;
 
-            leafs.push(leaf);
-        }
+                    let leaf = this.addLeaf(
+                        w/2 + (i-3) * 240,
+                        320 + (i%2 === 0 ? -1 : 1)*24,
+                        i%2 === 0 ? -1 : 1,
+                        'black',
+                        'A');
+
+                    leafs.push(leaf);
+                }
+            }
+        ];
+
+        let commandIndex = 0;
 
         this.input.keyboard.on('keyup', function (event: any) {
 
             if(event.key === 'PageDown')
             {
                 console.log('PageDown');
+
+                if(commandIndex < commands.length)
+                {
+                    commands[commandIndex]();
+
+                    commandIndex++;
+                }
             }
 
         });
