@@ -24,6 +24,8 @@ export default class Preloader extends Phaser.Scene {
         this.load.image('leaf-red', 'assets/images/leafs/red.png');
 
         this.load.image('heart', 'assets/images/heart.png');
+        this.load.atlas('flares', 'assets/images/flares.png', 'assets/images/flares.json');
+
     }
 
     create () {

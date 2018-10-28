@@ -42,7 +42,7 @@ export default class Game extends Phaser.Scene {
 
             this.load.once('complete', ()=>
             {
-                this.add.image(400, 300, 'snap');
+                this.addSnapshot();
 
             }, this);
 
@@ -50,6 +50,51 @@ export default class Game extends Phaser.Scene {
         });
 
         // document.body.appendChild(canvas);
+    }
+
+    addSnapshot ()
+    {
+        let w = <number>this.sys.game.config.width, h = <number>this.sys.game.config.height;
+
+        let flash = this.add.graphics();
+        flash.fillStyle(0xffffff, 1);
+        flash.fillRect(0, 0, w, h);
+        flash.depth = 105;
+        let tween = this.tweens.add({
+            targets: flash,
+            alpha: 0,
+            duration: 1000
+        });
+
+        let snap = this.add.image(w/2, h/2, 'snap');
+        snap.setScale(1.7,1.7);
+        snap.setOrigin(.5,.5);
+        snap.setRotation(-Math.PI/23);
+        snap.depth = 101;
+
+        let stroke = this.add.graphics();
+        stroke.setPosition(w/2, h/2);
+        stroke.lineStyle(44, 0x999999, 1);
+        stroke.strokeRect(- 640*1.7/2, - 480*1.7/2, 640*1.7, 480*1.7);
+        stroke.setRotation(-Math.PI/23);
+        stroke.depth = 102;
+
+        // celebration particle
+
+        let particles = this.add.particles('flares');
+
+        (<any>particles).createEmitter({
+            frame: [ 'red', 'green', 'blue', 'yellow', 'white' ],
+            x: w/2,
+            y: -200,
+            speed: 350,
+            gravityY: 300,
+            lifespan: 4000,
+            scale: 0.4,
+            //blendMode: 'ADD'
+        });
+        particles.depth = 105;
+
     }
 
     addLeaf (x:number, y:number, orientation: number, color: string, text: string)
