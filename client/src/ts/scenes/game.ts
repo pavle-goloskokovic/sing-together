@@ -7,6 +7,51 @@ import * as logger from 'js-logger'
  */
 export default class Game extends Phaser.Scene {
 
+    private video: HTMLVideoElement;
+
+    startVideo ()
+    {
+        this.video = document.createElement('video');
+
+        // Get access to the camera!
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)
+        {
+            // Not adding `{ audio: true }` since we only want video now
+            navigator.mediaDevices
+                .getUserMedia({ video: true })
+                .then((stream) =>
+                    {
+                        this.video.src = window.URL.createObjectURL(stream);
+                    }
+                );
+        }
+    }
+
+    snapShot ()
+    {
+        let canvas = document.createElement('canvas');
+        canvas.width = this.video.videoWidth;
+        canvas.height = this.video.videoHeight;
+
+        let context = canvas.getContext('2d');
+        context.drawImage(this.video, 0, 0, canvas.width, canvas.height);
+
+        canvas.toBlob((blob) =>
+        {
+            this.load.image('snap', window.URL.createObjectURL(blob));
+
+            this.load.once('complete', ()=>
+            {
+                this.add.image(400, 300, 'snap');
+
+            }, this);
+
+            this.load.start();
+        });
+
+        // document.body.appendChild(canvas);
+    }
+
     addLeaf (x:number, y:number, orientation: number, color: string, text: string)
     {
         let leaf = this.add.sprite(x, y, `leaf-${color}`);
@@ -38,8 +83,26 @@ export default class Game extends Phaser.Scene {
         leaf.leaf.setTexture(`leaf-${color}`);
     }
 
+    setEffect (name: string)
+    {
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost:3000/nano/effect');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                //var userInfo = JSON.parse(xhr.responseText);
+                console.log(xhr.responseText);
+            }
+        };
+        xhr.send(JSON.stringify({
+            name: name
+        }));
+    }
+
     create () {
         logger.info('Game enter');
+
+        this.startVideo();
 
         let w = <number>this.sys.game.config.width, h = <number>this.sys.game.config.height;
 
@@ -78,6 +141,13 @@ export default class Game extends Phaser.Scene {
 
                     leafs.push(leaf);
                 }
+
+                if(this.video.src)
+                {
+                    this.video.play();
+                }
+
+                this.setEffect('Blank');
             },
 
             // A solo
@@ -208,6 +278,10 @@ export default class Game extends Phaser.Scene {
                 // MAMA on top
                 leafs[3].text.depth = 100;
             },
+            ()=>
+            {
+                this.snapShot();
+            }
 
 
         ];

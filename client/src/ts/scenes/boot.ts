@@ -25,7 +25,7 @@ export default class Boot extends Phaser.Scene {
         };
         xhr.send();
 
-        xhr = new XMLHttpRequest();
+        /*xhr = new XMLHttpRequest();
         xhr.open('POST', 'http://localhost:3000/nano/effect');
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onload = function() {
@@ -36,7 +36,7 @@ export default class Boot extends Phaser.Scene {
         };
         xhr.send(JSON.stringify({
             name: Math.random() > 0.5 ? 'Forest' : 'Romantic'
-        }));
+        }));*/
 
         /*setTimeout(function ()
         {
