@@ -20,7 +20,7 @@ export const mute = false;
  * Based on this setting we choose which Phaser.Game implementation we want to use.
  * @type {boolean}
  */
-export const stats = true;
+export const stats = false;
 /**
  * Setting defining the global logging filter level.
  * @type {ILogLevel}
