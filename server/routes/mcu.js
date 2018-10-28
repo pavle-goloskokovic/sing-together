@@ -2,8 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 const  request   = require('request');
-
+let timeoutBegin = null;
 let timeout = null;
+let timeoutStart = null;
+let timeoutEnd = null;
+let timeoutWet = null;
 
 function toggle ()
 {
@@ -19,18 +22,45 @@ function toggle ()
 
 router.get('/start', function(req, res, next)
 {
-    if(!timeout)
+
+    if(!timeoutWet)
     {
-        timeout = setTimeout(function ()
+        timeoutWet = setTimeout(function ()
         {
             toggle();
 
-            timeout = null;
+            timeoutWet = null;
 
-        }, 5000);
+        }, 2000);
 
         toggle();
     }
+
+
+    if(!timeoutStart)
+    {
+        timeoutStart = setTimeout(function ()
+        {
+            toggle();
+
+            timeoutStart = null;
+
+        }, 3000);
+
+    }
+
+    if(!timeoutEnd)
+    {
+        timeoutEnd = setTimeout(function ()
+        {
+            toggle();
+
+            timeoutEnd = null;
+
+        }, 10000);
+
+    }
+
 
     res.send('Success!');
 
