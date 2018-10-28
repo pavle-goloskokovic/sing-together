@@ -154,22 +154,32 @@ export default class Game extends Phaser.Scene {
 
             ()=>{
                 this.setLeaf(leafs[1], 'blue', 'A');
+
+                this.setEffect('A1');
             },
             ()=>{
                 this.setLeaf(leafs[1], 'black', '');
                 this.setLeaf(leafs[5], 'blue', 'A');
+
+                this.setEffect('A2');
             },
             ()=>{
                 this.setLeaf(leafs[5], 'black', '');
                 this.setLeaf(leafs[2], 'blue', 'A');
+
+                this.setEffect('A3');
             },
             ()=>{
                 this.setLeaf(leafs[2], 'black', '');
                 this.setLeaf(leafs[4], 'blue', 'A');
+
+                this.setEffect('A4');
             },
             ()=>{
                 this.setLeaf(leafs[4], 'black', '');
                 this.setLeaf(leafs[3], 'blue', 'A');
+
+                this.setEffect('A5');
             },
 
             // M solo
@@ -177,22 +187,32 @@ export default class Game extends Phaser.Scene {
             ()=>{
                 this.setLeaf(leafs[3], 'black', '');
                 this.setLeaf(leafs[5], 'yellow', 'M');
+
+                this.setEffect('M1');
             },
             ()=>{
                 this.setLeaf(leafs[5], 'black', '');
                 this.setLeaf(leafs[1], 'yellow', 'M');
+
+                this.setEffect('M2');
             },
             ()=>{
                 this.setLeaf(leafs[1], 'black', '');
                 this.setLeaf(leafs[4], 'yellow', 'M');
+
+                this.setEffect('M3');
             },
             ()=>{
                 this.setLeaf(leafs[4], 'black', '');
                 this.setLeaf(leafs[2], 'yellow', 'M');
+
+                this.setEffect('M4');
             },
             ()=>{
                 this.setLeaf(leafs[2], 'black', '');
                 this.setLeaf(leafs[3], 'yellow', 'M');
+
+                this.setEffect('M5');
             },
 
             // M + A => MA
@@ -200,30 +220,44 @@ export default class Game extends Phaser.Scene {
             ()=>{
                 this.setLeaf(leafs[3], 'black', '');
                 this.setLeaf(leafs[0], 'yellow', 'M');
+
+                this.setEffect('M6');
             },
             ()=>{
                 this.setLeaf(leafs[6], 'blue', 'A');
+
+                this.setEffect('MA1');
             },
             ()=>{
                 this.setLeaf(leafs[0], 'black', '');
                 this.setLeaf(leafs[1], 'yellow', 'M');
+
+                this.setEffect('MA2');
             },
             ()=>{
                 this.setLeaf(leafs[6], 'black', '');
                 this.setLeaf(leafs[5], 'blue', 'A');
+
+                this.setEffect('MA3');
             },
             ()=>{
                 this.setLeaf(leafs[1], 'black', '');
                 this.setLeaf(leafs[2], 'yellow', 'M');
+
+                this.setEffect('MA4');
             },
             ()=>{
                 this.setLeaf(leafs[5], 'black', '');
                 this.setLeaf(leafs[4], 'blue', 'A');
+
+                this.setEffect('MA5');
             },
             ()=>{
                 this.setLeaf(leafs[2], 'black', '');
                 this.setLeaf(leafs[4], 'black', '');
                 this.setLeaf(leafs[3], 'green', 'MA');
+
+                this.setEffect('MA6');
             },
 
             // MA  + MA => MAMA
@@ -231,30 +265,44 @@ export default class Game extends Phaser.Scene {
             ()=>{
                 this.setLeaf(leafs[3], 'black', '');
                 this.setLeaf(leafs[0], 'green', 'MA');
+
+                this.setEffect('MA7');
             },
             ()=>{
                 this.setLeaf(leafs[6], 'green', 'MA');
+
+                this.setEffect('MAMA1');
             },
             ()=>{
                 this.setLeaf(leafs[0], 'black', '');
                 this.setLeaf(leafs[1], 'green', 'MA');
+
+                this.setEffect('MAMA2');
             },
             ()=>{
                 this.setLeaf(leafs[6], 'black', '');
                 this.setLeaf(leafs[5], 'green', 'MA');
+
+                this.setEffect('MAMA3');
             },
             ()=>{
                 this.setLeaf(leafs[1], 'black', '');
                 this.setLeaf(leafs[2], 'green', 'MA');
+
+                this.setEffect('MAMA4');
             },
             ()=>{
                 this.setLeaf(leafs[5], 'black', '');
                 this.setLeaf(leafs[4], 'green', 'MA');
+
+                this.setEffect('MAMA5');
             },
             ()=>{
                 this.setLeaf(leafs[2], 'black', '');
                 this.setLeaf(leafs[4], 'black', '');
                 this.setLeaf(leafs[3], 'red', 'MAMA');
+
+                this.setEffect('Romantic');
 
                 // TODO add hear particle here
 
@@ -281,6 +329,8 @@ export default class Game extends Phaser.Scene {
             ()=>
             {
                 this.snapShot();
+
+                this.setEffect('Northern Lights');
             }
 
 
