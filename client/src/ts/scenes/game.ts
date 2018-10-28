@@ -32,6 +32,12 @@ export default class Game extends Phaser.Scene {
 
     }
 
+    setLeaf (leaf: any, color: string, text: string)
+    {
+        leaf.text.setText(text);
+        leaf.leaf.setTexture(`leaf-${color}`);
+    }
+
     create () {
         logger.info('Game enter');
 
@@ -68,11 +74,57 @@ export default class Game extends Phaser.Scene {
                         320 + (i%2 === 0 ? -1 : 1)*24,
                         i%2 === 0 ? -1 : 1,
                         'black',
-                        'A');
+                        '');
 
                     leafs.push(leaf);
                 }
-            }
+            },
+
+            // A solo
+
+            ()=>{
+                this.setLeaf(leafs[1], 'blue', 'A');
+            },
+            ()=>{
+                this.setLeaf(leafs[1], 'black', '');
+                this.setLeaf(leafs[5], 'blue', 'A');
+            },
+            ()=>{
+                this.setLeaf(leafs[5], 'black', '');
+                this.setLeaf(leafs[2], 'blue', 'A');
+            },
+            ()=>{
+                this.setLeaf(leafs[2], 'black', '');
+                this.setLeaf(leafs[4], 'blue', 'A');
+            },
+            ()=>{
+                this.setLeaf(leafs[4], 'black', '');
+                this.setLeaf(leafs[3], 'blue', 'A');
+            },
+
+            // M solo
+
+            ()=>{
+                this.setLeaf(leafs[3], 'black', '');
+                this.setLeaf(leafs[5], 'yellow', 'M');
+            },
+            ()=>{
+                this.setLeaf(leafs[5], 'black', '');
+                this.setLeaf(leafs[1], 'yellow', 'M');
+            },
+            ()=>{
+                this.setLeaf(leafs[1], 'black', '');
+                this.setLeaf(leafs[4], 'yellow', 'M');
+            },
+            ()=>{
+                this.setLeaf(leafs[4], 'black', '');
+                this.setLeaf(leafs[2], 'yellow', 'M');
+            },
+            ()=>{
+                this.setLeaf(leafs[2], 'black', '');
+                this.setLeaf(leafs[3], 'yellow', 'M');
+            },
+
         ];
 
         let commandIndex = 0;
