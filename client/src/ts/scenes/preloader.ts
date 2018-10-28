@@ -26,6 +26,17 @@ export default class Preloader extends Phaser.Scene {
         this.load.image('heart', 'assets/images/heart.png');
         this.load.atlas('flares', 'assets/images/flares.png', 'assets/images/flares.json');
 
+        // Loading music
+        this.load.audio('beep', [
+            'assets/audio/beep.mp3'
+        ]);
+        this.load.audio('camera', [
+            'assets/audio/camera.mp3'
+        ]);
+        this.load.audio('kids', [
+            'assets/audio/kids.mp3'
+        ]);
+
     }
 
     create () {

@@ -63,8 +63,13 @@ export default class Game extends Phaser.Scene {
         let tween = this.tweens.add({
             targets: flash,
             alpha: 0,
-            duration: 1000
+            duration: 1000,
+            onComplete: ()=>
+            {
+                this.sound.play('kids');
+            },
         });
+        this.sound.play('camera');
 
         let snap = this.add.image(w/2, h/2, 'snap');
         snap.setScale(1.7,1.7);
@@ -383,7 +388,7 @@ export default class Game extends Phaser.Scene {
 
         let commandIndex = 0;
 
-        this.input.keyboard.on('keyup', function (event: any) {
+        this.input.keyboard.on('keyup', (event: any) => {
 
             if(event.key === 'PageDown')
             {
@@ -394,6 +399,8 @@ export default class Game extends Phaser.Scene {
                     commands[commandIndex]();
 
                     commandIndex++;
+
+                    this.sound.play('beep');
                 }
             }
 
