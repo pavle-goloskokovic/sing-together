@@ -54,6 +54,8 @@ export default class Game extends Phaser.Scene {
 
     addSnapshot ()
     {
+        this.activateMysteryBox();
+
         let w = <number>this.sys.game.config.width, h = <number>this.sys.game.config.height;
 
         let flash = this.add.graphics();
@@ -147,6 +149,22 @@ export default class Game extends Phaser.Scene {
         xhr.send(JSON.stringify({
             name: name
         }));
+    }
+
+    activateMysteryBox ()
+    {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://localhost:3000/mcu/start');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                console.log
+                ('User\'s name is ' + xhr.responseText);
+            }
+            else {
+                console.log('Request failed.  Returned status of ' + xhr.status);
+            }
+        };
+        xhr.send();
     }
 
     create () {

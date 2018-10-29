@@ -57,7 +57,7 @@ router.get('/start', function(req, res, next)
 
             timeoutEnd = null;
 
-        }, 10000);
+        }, 13000);
 
     }
 
